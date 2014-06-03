@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="answerpicker">
+        <div class="userbutton usery">
+            <img src="{{imgPathY}}" width="300" height="300">
+            <span>{{nameY}}</span>
+        </div>
+        <div class="userbutton userx">
+            <img src="{{imgPathX}}" width="300" height="300">
+            <span>{{nameX}}</span>
+        </div>
+    </div>
+    <p class="the-tweet">&ldquo;{{body}}&rdquo;</p>
+</div>

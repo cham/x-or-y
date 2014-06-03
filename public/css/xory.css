@@ -1,0 +1,21 @@
+body {
+    background: #18bc9c;
+    color: #fff;
+}
+input {
+    color: #18bc9c;
+}
+hr.star-light {
+    max-width: 330px;
+}
+.navbar-fixed-top {
+    padding: 5px 0;
+}
+
+.nameinput {
+    font-size: 19px;
+    width: 147px;
+    border: 0;
+    padding: 3px 6px;
+    margin: 0 7px;
+}
