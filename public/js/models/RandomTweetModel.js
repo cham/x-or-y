@@ -7,7 +7,7 @@ function(
     'use strict';
 
     return Backbone.Model.extend({
-        urlRoot: '/randomtweet',
+        urlRoot: '/x-or-y/randomtweet',
 
         url: function(){
             return this.urlRoot + '?x=' + this.get('x') + '&y=' + this.get('y');
