@@ -10,24 +10,29 @@ function(
 ){
     'use strict';
 
-    var model = new RandomTweetModel(),
+    var cleanNameRegex = /[^a-z0-9_]/ig,
+        model = new RandomTweetModel(),
         view = new RandomTweetView({
             model: model
         });
 
     $('body').append(view.$el);
 
-    $('.btn').click(function(){
-        var x = $('.x').val(),
-            y = $('.y').val();
+    $('.go').click(function(){
+        var x = $('.x').val().replace(cleanNameRegex, ''),
+            y = $('.y').val().replace(cleanNameRegex, '');
 
+        window.location.href = '/' + x + '/or/' + y;
+    });
+
+    if($('.x').val() && $('.y').val()){
         model.set({
-            x: x,
-            y: y
+            x: $('.x').val(),
+            y: $('.y').val()
         });
         model.fetch().then(function(){
             view.render();
         });
-    });
+    }
 
 });

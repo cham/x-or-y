@@ -29,7 +29,7 @@ function(
     }
 
     function linkTweet($container, username, tweetid){
-        // $container.after('<a class="tweet-link" href="http://twitter.com/'+ username + '/status/'+ tweetid +'" target="_blank">Original</a>');
+        $container.after('<a class="tweet-link" href="http://twitter.com/'+ username + '/status/'+ tweetid +'" target="_blank">Original</a>');
     }
 
     function removeLoadingMessage($el){
@@ -41,18 +41,32 @@ function(
         $el.append($loadingMessage.clone());
     }
 
+    function fetchAnotherTweet(view, model){
+        model.fetch().then(function(){
+            view.render();
+        });
+    }
+
+    function showNextTweetButton(view){
+        view.$('.next-tweet').removeClass('hidden');
+    }
+
     return Backbone.View.extend({
 
         className: 'RandomTweetView',
 
         events: {
             'click .userbutton': function(){
-                var isX = this.model.get('user').toLowerCase() === this.model.get('x').toLowerCase(),
-                    tweetId = this.model.get('tweet').id,
+                var isX = this.model.get('thisUser') === 1,
+                    tweetId = this.model.get('id'),
                     username = isX ? this.model.get('x') : this.model.get('y');
 
                 highlightButtons(this.$('.userbutton'), isX);
                 linkTweet(this.$('.the-tweet'), username, tweetId);
+                showNextTweetButton(this);
+            },
+            'click .next-tweet': function(){
+                fetchAnotherTweet(this, this.model);
             }
         },
 
@@ -69,10 +83,10 @@ function(
 
         render: function(){
             this.$el.html(template({
-                body: this.model.get('tweet').text.trim(),
-                imgPathX: getProfileImage(this.model, 'userOne'),
+                body: this.model.get('tweet').trim(),
+                imgPathX: this.model.get('userOne').replace('_normal','_400x400'),
                 nameX: this.model.get('x'),
-                imgPathY: getProfileImage(this.model, 'userTwo'),
+                imgPathY: this.model.get('userTwo').replace('_normal','_400x400'),
                 nameY: this.model.get('y')
             }));
         }
