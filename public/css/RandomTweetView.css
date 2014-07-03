@@ -56,8 +56,13 @@
 }
 .tweet-link {
     color: white;
-    float: right;
+    display: block;
     text-decoration: underline;
+    margin: 0 auto;
+    width: 50px;
+}
+.tweet-link:hover {
+    color: white;
 }
 .usery {
     float: right;

@@ -29,6 +29,7 @@ function(
     }
 
     function linkTweet($container, username, tweetid){
+        $('.tweet-link').remove();
         $container.after('<a class="tweet-link" href="http://twitter.com/'+ username + '/status/'+ tweetid +'" target="_blank">Original</a>');
     }
 
