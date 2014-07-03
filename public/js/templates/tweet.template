@@ -10,4 +10,5 @@
         </div>
     </div>
     <p class="the-tweet">&ldquo;{{body}}&rdquo;</p>
+    <a class="next-tweet hidden btn btn-lg btn-outline">Another</a>
 </div>

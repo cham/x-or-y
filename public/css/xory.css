@@ -13,6 +13,7 @@ hr.star-light {
 }
 body .container {
     width: 750px;
+    position: relative;;
 }
 
 .nameinput {
@@ -21,4 +22,10 @@ body .container {
     border: 0;
     padding: 3px 6px;
     margin: 0 7px;
+}
+
+.go {
+    position: absolute;
+    z-index: 2;
+    margin-left: -30px;
 }
