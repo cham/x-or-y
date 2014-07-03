@@ -16,13 +16,23 @@ function(
             model: model
         });
 
-    $('body').append(view.$el);
-
-    $('.go').click(function(){
+    function reloadWithSelectedUsers(){
         var x = $('.x').val().replace(cleanNameRegex, ''),
             y = $('.y').val().replace(cleanNameRegex, '');
 
         window.location.href = '/' + x + '/or/' + y;
+    }
+
+    $('body').append(view.$el);
+
+    $('.go').click(function(){
+        reloadWithSelectedUsers();
+    });
+
+    $('.x, .y').keypress(function(e){
+        if(e.which === 13){
+            reloadWithSelectedUsers();
+        }
     });
 
     if($('.x').val() && $('.y').val()){
