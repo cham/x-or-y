@@ -11,6 +11,9 @@ hr.star-light {
 .navbar-fixed-top {
     padding: 5px 0;
 }
+body .container {
+    width: 750px;
+}
 
 .nameinput {
     font-size: 19px;
